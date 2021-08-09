@@ -1,0 +1,12 @@
+---
+- name: Copiar configuración del nodo de control a los nodos centos
+  hosts: centos 
+  remote_user: administrador
+  become: True
+  tasks: 
+    - name: configurar ssh.config
+      service: src=sshd.config dest=/etc/sshd.config
+      notify: reiniciar_sshd
+  handlers:
+    - name: reiniciar_sshd
+      service: name=sshd state=restarted
