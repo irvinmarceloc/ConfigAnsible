@@ -16,3 +16,4 @@
   tasks:
     - name: hacer un ping
       template: src=hosts.j2  dest=/tmp/hosts
+      
