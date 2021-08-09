@@ -1,0 +1,8 @@
+- hosts: localhost
+  remote_user: root
+  become: True
+  vars:
+    - mi_ip: "192.168.0.12"
+  tasks:
+    - name: hacer un ping
+      template: src=hosts.j2  dest=/tmp/hosts

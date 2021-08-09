@@ -1,0 +1,10 @@
+---
+- name: Copiar configuración del nodo de control a los nodos centos
+  hosts: centos 
+  remote_user: administrador
+  become: True
+  tasks: 
+    - name: Copiar fichero hosts
+      copy: src="/etc/hosts"  dest="/etc/hosts"
+    - name: Iniciar servicios 
+      service: state=restarted
