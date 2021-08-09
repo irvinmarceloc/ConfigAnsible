@@ -5,6 +5,11 @@
   become: True
   tasks: 
     - name: Copiar fichero hosts
-      copy: src="/etc/hosts"  dest="/etc/hosts"
+      copy: 
+        src="/etc/hosts"
+        dest="/etc/hosts"
+        owner=root
+        group=root
+        mode=0644
     - name: Iniciar servicios 
       service: state=restarted

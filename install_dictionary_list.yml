@@ -1,0 +1,18 @@
+- name: Crear fichero usando variables 
+  hosts: localhost
+  remote_user: root
+  become: True
+  vars:
+    - mi_ip: "192.168.0.12"
+    - milista: ["httpd","mariadb","php5"]
+    - milista_larga:
+        - httpd
+        - mariadb
+        - php5
+    - instalar:
+        - web: httpd
+        - bd: mariadb
+        - script: php5
+  tasks:
+    - name: hacer un ping
+      template: src=hosts.j2  dest=/tmp/hosts
