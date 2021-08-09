@@ -1,0 +1,23 @@
+[debian]
+debian1 ansible_host=192.168.33.6 ansible_user = vagrant
+
+[ubuntu]
+ubuntu1 ansible_host=192.168.33.105 ansible_user = ubuntu
+
+[centos]
+centos1 ansible_host = 192.168.251.60 
+centos2 ansible_host =192.168.251.61
+centos3 ansible_host =192.168.251.57
+centos1 ansible_host =192.168.251.54
+centos1 ansible_host =192.168.251.59
+centos1 ansible_host =192.168.251.40
+
+[centos:vars]
+ansible_user = administrador
+
+[apt:children]
+debian
+ubuntu
+
+[apt:vars]
+ansible_become = True 
