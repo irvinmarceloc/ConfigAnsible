@@ -1,0 +1,10 @@
+---
+- name: Copiar configuración del nodo de control a los nodos centos
+  hosts: centos 
+  remote_user: administrador
+  become: True
+  tasks: 
+    - name: Configurar fichero
+      service: src=sshd.config dest=/etc/sshd.config
+    - name: Tarea include 
+      include: restar.yml
