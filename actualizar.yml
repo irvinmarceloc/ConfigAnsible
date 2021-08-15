@@ -1,0 +1,11 @@
+---
+- name: Perl
+  hosts: localhost
+  become: yes
+  tasks: 
+    - name: Actualizar lista de paquetes
+      apt: update_cache=yes
+    - name: Actualizar paquetes
+      apt: upgrade=dist
+    - name: Instalar nginx
+      apt: name=nginx state=latest

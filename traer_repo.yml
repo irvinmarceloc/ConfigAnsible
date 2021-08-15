@@ -1,0 +1,11 @@
+---
+- name: Copiar repo 
+  hosts: localhost
+  become: True
+  tasks: 
+    - name: Clone repo NES
+      ansible.builtin.git:
+        repo: https://github.com/neuromat/nes.git
+        dest: /src/nes
+        single_branch: yes
+        version: TAG-1.72.4 

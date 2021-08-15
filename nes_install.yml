@@ -1,0 +1,17 @@
+---
+- name: NES install
+  hosts: localhost
+  become: True
+  tasks: 
+    - name: Instalar virtualenv
+      apt: name=virtualenv state=latest
+    - name: Instalar git 
+      apt: name=git state=latest
+    - name: Instalar graphviz
+      apt: name=graphviz state=latest
+    - name: Instalar python3-psycopg2
+      apt: name=python3-psycopg2 state=latest state=present
+
+
+
+

@@ -1,0 +1,6 @@
+ansible_user: z49
+ansible_become: True
+ansible_become_user : z49
+ansible_become_password : acces2020*
+
+

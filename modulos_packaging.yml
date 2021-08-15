@@ -1,0 +1,48 @@
+---
+- name: Perl
+  hosts: localhost
+  become: True
+  tasks: 
+    - name: Install gcc
+      apt:  name=gcc
+
+    - name: Install perl
+      apt: name=perl
+      
+    - name: Install Dancer perl package
+      community.general.cpanm:
+        name: Dancer
+
+    - name: Install version 0.99_05 of the Plack perl package
+      community.general.cpanm:
+        name: MIYAGAWA/Plack-0.99_05.tar.gz
+
+    - name: Install Dancer into the specified locallib
+      community.general.cpanm:
+        name: Dancer
+        locallib: /srv/webapps/my_app/extlib
+
+    - name: Install perl dependencies from local directory
+      community.general.cpanm:
+        from_path: /srv/webapps/my_app/src/
+
+    - name: Install Dancer perl package without running the unit tests in indicated locallib
+      community.general.cpanm:
+        name: Dancer
+        notest: True
+        locallib: /srv/webapps/my_app/extlib
+
+    - name: Install Dancer perl package from a specific mirror
+      community.general.cpanm:
+        name: Dancer
+        mirror: 'http://cpan.cpantesters.org/'
+
+    - name: Install Dancer perl package into the system root path
+      become: yes
+      community.general.cpanm:
+        name: Dancer
+
+    - name: Install Dancer if it is not already installed OR the installed version is older than version 1.0
+      community.general.cpanm:
+        name: Dancer
+        version: '1.0'
