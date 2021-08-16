@@ -3,6 +3,10 @@
   hosts: localhost
   become: True
   tasks: 
-    - name: Instalar pip 
-      community.general.easy_install: name=pip state=latest
+    - name: Install or update pip
+      community.general.easy_install:
+        name: pip
+        state: latest
+    - name: Instalar modulo requests
+      community.general.pip_package_info: name=requests state=latest
 

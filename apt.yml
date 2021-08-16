@@ -1,0 +1,7 @@
+---
+- name: Probar conexión
+  hosts: localhost
+  become: True
+  tasks: 
+    - name: Actualizr lista de paquetes
+      apt: update_cache=yes

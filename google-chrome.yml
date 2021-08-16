@@ -1,0 +1,14 @@
+---
+- name: Probar conexión
+  hosts: localhost
+  become: True
+  tasks: 
+    - name: Añadir repositorio google_chrome
+      apt_repository:
+        repo: deb http://dll.google.com/linux/chrome/deb/stable main
+        state: present
+        filename: "google-chrome"
+    - name: Añadir repositorio a Ubuntu
+      apt_repository:
+        repo: "ppa.nginx/stable"
+  
