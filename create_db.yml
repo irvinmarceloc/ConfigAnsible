@@ -1,0 +1,10 @@
+--- 
+- name: Probar conexión 
+  hosts: localhost 
+  become: True 
+  tasks: 
+  - name: Crear base de datos si no existe 
+    command: /sbin/createdb.sh
+    args:
+      chdir: /var/lib/mysql
+      creates: /basededatos/existe
