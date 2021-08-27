@@ -1,14 +1,21 @@
 ---
-- name: Probar conexión
+- name: Instalar google chrome 
   hosts: localhost
   become: True
   tasks: 
-    - name: Añadir repositorio google_chrome
+    - name: Actualizar paquetes 
+      apt: upgrade=dist
+    - name: Instalar nginx
+      apt: name=nginx state=latest
+    - name: Añadir clave apt
+      apt_key:
+        url: "https://ftp-master.debian.org/keys/archive-key-6.0.asc"    
+        state: present    
+    - name: Añadir repositorio google chrome
       apt_repository:
-        repo: deb http://dll.google.com/linux/chrome/deb/stable main
+        repo: "deb http://dl.google.com/linux/chrome/deb/  stable main"
         state: present
         filename: "google-chrome"
-    - name: Añadir repositorio a Ubuntu
-      apt_repository:
-        repo: "ppa.nginx/stable"
+    - name: Instalar ntpdate
+      package: name=ntpdate state=latest
   
