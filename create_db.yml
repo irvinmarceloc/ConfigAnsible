@@ -1,5 +1,5 @@
 --- 
-- name: Probar conexión 
+- name: Instalar DB
   hosts: localhost 
   become: True 
   tasks: 

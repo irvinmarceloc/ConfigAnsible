@@ -1,0 +1,5 @@
+---
+- name: Identificar
+  hosts: localhost
+  tasks: 
+    - command: uname -a  
